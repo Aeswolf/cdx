@@ -6,19 +6,19 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/Aeswolf/cdx/cd"
+	"github.com/Aeswolf/cdx/funcs"
 )
 
-
 func main() {
-	// cdx 
+	// cdx
 	cdx := cd.CDX{Src: "."}
 
 	//root command
 	root := &cobra.Command{
-		Use: "cdx [src] dest",
+		Use:   "cdx [src] dest",
 		Short: "A tool for lazy transitioning between directories and/ files",
-		Long: ``,
-		Args: cobra.RangeArgs(1, 2),
+		Long:  ``,
+		Args:  cobra.RangeArgs(1, 2),
 		Run: func(cmd *cobra.Command, args []string) {
 			cdx.Dest = args[0]
 
@@ -26,10 +26,9 @@ func main() {
 				cdx.Src, cdx.Dest = args[0], args[1]
 			}
 
-			log.Fatalf("\nSrc = %s\nDest = %s\n", cdx.Src, cdx.Dest)
+			log.Println("Path =", funcs.GetPath(cdx))
 		},
 	}
-
 
 	// executing root command
 	if err := root.Execute(); err != nil {
