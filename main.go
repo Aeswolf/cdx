@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/Aeswolf/cdx/cd"
+	"github.com/Aeswolf/cdx/funcs"
 )
 
 // entry point
@@ -27,7 +28,8 @@ func main() {
 				cdx.SetSrc(args[0])
 				cdx.SetDest(args[1])
 			}
-			log.Printf("Root command is working\nSrc dir = %s\nDest dir = %s\n", cdx.GetSrc(), cdx.GetDest())
+			// log.Printf("Root command is working\nSrc dir = %s\nDest dir = %s\n", cdx.GetSrc(), cdx.GetDest())
+			log.Printf("Needed Path = %s", funcs.GetPath(cdx))
 		},
 	}
 
