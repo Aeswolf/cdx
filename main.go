@@ -7,6 +7,7 @@ import (
 
 	"github.com/Aeswolf/cdx/cd"
 	"github.com/Aeswolf/cdx/funcs"
+	"github.com/Aeswolf/cdx/subcommands"
 )
 
 // entry point
@@ -32,6 +33,9 @@ func main() {
 			log.Printf("Needed Path = %s", funcs.GetPath(cdx))
 		},
 	}
+
+	// Adding subcommands
+	root.AddCommand(subcommands.Code)
 
 	// executing the root command
 	if err := root.Execute(); err != nil {
